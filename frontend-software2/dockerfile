@@ -1,11 +1,6 @@
-FROM node:23.11-slim as build
-RUN npm install -g @angular/cli
+FROM node:23.11-slim
+RUN npm i -g @angular/cli
 WORKDIR /app
-COPY frontend-software2/package*.json ./
-RUN npm install
-COPY frontend-software2/ .
-RUN ng build --configuration=production
-FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+COPY . .
+EXPOSE 4200
+CMD ["ng", "serve", "--host", "0.0.0.0"]

@@ -1,0 +1,1 @@
+26-04-2025 - Dockerización - Se dockerizó con respecto a mongodb (sin pruebas de frontend)
